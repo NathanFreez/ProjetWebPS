@@ -42,5 +42,5 @@ angular.module('myEventApp', ['ui.router', 'ngResource'])
                             controller: 'infosAllEvenementCtrl'
                         });
                 //Pour tout autre route (url) qui ne correspondrait pas à un des états déclarés précédemment, on redirige vers l'état creation.
-                //$urlServiceProvider.rules.otherwise({state: 'creationEvenement'});
+                $urlServiceProvider.rules.otherwise({state: 'creationEvenement'});
             }]);
