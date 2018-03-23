@@ -28,7 +28,7 @@ app.get('/evt/:id', function (req, res) {
 });
 
 //Affiche la liste de tout les évènements
-app.get('/', function (req, res) {
+app.get('/liste', function (req, res) {
     var list = evenement.afficheAllEvt();
     res.json(list);
 }) ;
@@ -69,7 +69,7 @@ app.post('/evt/type/:id', function (req, res) {
         res.status(409).json({monErreur: `L'evenement d'id ${req.params.id} n'existe pas.`});
     } else {
         //Ressource créé : on renvoit l'état de la ressource (cad ici sa position)
-        res.status(201).json(evenement.afficheType(req.params.id, req.body.idPar));
+        res.status(201).json(evenement.afficheType(req.params.id, req.body.idTp));
     }
 });
 
@@ -85,6 +85,23 @@ app.post('/evt/par/acc/:id', function (req, res) {
 
 app.listen(3000, function () {
     console.log('Example app listening on port 3000!');
+});
+
+//Suppression d'un évènement existant
+app.get('/stat', function (req, res) {
+    var stat = evenement.statGen();
+    res.json(stat);
+});
+
+//méthode pour avoir les donnés d'un evt
+app.get('/stat/evt/:id', function (req, res) {
+    var stat = evenement.statEvt(req.params.id);
+    if(!stat){
+        res.status(409).json({monErreur: `L'evenement d'id ${req.params.id} n'existe pas.`});
+    } else {
+        //Ressource supprimé
+        res.status(201).json(stat);
+    }
 });
 
 //Suppression d'un évènement existant
