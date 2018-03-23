@@ -11,6 +11,11 @@ angular.module('myEventApp', ['ui.router', 'ngResource'])
                             templateUrl: 'Vue/creationEvenement.html',
                             controller: 'creationEvenementCtrl'
                         })
+                        .state('suppressionEvenement', {
+                            url: '/suppression-evenement',
+                            templateUrl: 'Vue/suppressionEvenement.html',
+                            controller: 'suppressionEvenementCtrl'
+                        })
                         .state('creationParticipant', {
                             url: '/creation-participant',
                             templateUrl: 'Vue/creationParticipant.html',
