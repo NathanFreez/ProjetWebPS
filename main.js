@@ -104,7 +104,7 @@ app.get('/stat/evt/:id', function (req, res) {
     }
 });
 
-//Suppression d'un évènement existant
+//Suppression d'un évènement existant FAIT
 app.post('/evt/supp/:id', function (req, res) {
     if (!evenement.suppEvt(req.params.id)) {
         res.status(409).json({monErreur: `L'evenement d'id ${req.params.id} n'existe pas, ou n'a pas pu être supprimé.`});

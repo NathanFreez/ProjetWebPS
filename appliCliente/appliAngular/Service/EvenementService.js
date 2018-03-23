@@ -10,6 +10,10 @@ angular.module('myEventApp')
                     AllEvenement: $resource('/', //URL de la ressource
                             ),
                     SupprEvenement: $resource('/evt/supp/:id', //URL de la ressource
+                            ),
+                    StatsEvenement: $resource('/stat/evt/:id', //URL de la ressource
+                            ),
+                    StatsGeneral: $resource('/stat', //URL de la ressource
                             )
                 };
             }]);

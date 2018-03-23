@@ -1,21 +1,21 @@
 /*
- * Ajout d'un controlleur suppressionEvenementCtrl au module myEventApp. Le module myEventApp doit avoir été créé précédemment (cf commentaire sur index.html)
+ * Ajout d'un controlleur statsEvenementCtrl au module myEventApp. Le module myEventApp doit avoir été créé précédemment (cf commentaire sur index.html)
  */
 angular.module('myEventApp')
-        .controller('suppressionEvenementCtrl', ["$scope", "EvenementFactory", function ($scope, EvtFacto) { //Injection du $scope mais également de notre service CompteFactory
+        .controller('statsEvenementCtrl', ["$scope", "EvenementFactory", function ($scope, EvtFacto) { //Injection du $scope mais également de notre service CompteFactory
                 //Fonction "publique" d'obtention de la position du compte
-                $scope.suppEvt = function () {
+                $scope.statEvt = function () {
                     //Supprime l'ancienne position et l'ancien message d'erreur si présent
-                    delete $scope.evenement;
+                    delete $scope.stats;
                     delete $scope.erreur;
-                    //Supprime l'evenement en indiquant l'id de l'evenement pour paramétrer l'url
-                    $scope.evenement = EvtFacto.SupprEvenement.get({id: $scope.id}, function () {
-                        //evenement récupérée
+                    //Récupère les statistiques de l'evenement en indiquant l'id de l'evenement pour paramétrer l'url
+                    $scope.stats = EvtFacto.StatsEvenement.get({id: $scope.id}, function () {
+                        //stats récupérée
                         //ici rien à faire
-                        console.log($scope.evenement);
+                        console.log($scope.stats);
                     }, function (err) {
                         //une erreur est survenue : on supprime l'objet evenement créé
-                        console.log($scope.evenement);
+                        console.log($scope.stats);
                         //Si le code de retour est un de node code géré, on affichera le message d'erreur personnalisé
                         if (err.status === 404) {
                             $scope.erreur = err.data.monErreur;
