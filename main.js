@@ -28,7 +28,7 @@ app.get('/evt/:id', function (req, res) {
 });
 
 //Affiche la liste de tout les évènements
-app.get('/', function (req, res) {
+app.get('/liste', function (req, res) {
     var list = evenement.afficheAllEvt();
     res.json(list);
 }) ;
