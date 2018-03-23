@@ -56,11 +56,11 @@ function Participant(idPar, nomPar, prenomPar, mailPar, telPar, idevt) {
     this.tailleListAcc = 0;
     // la méthode pour ajouter des accompagnateurs
     this.ajouterAcc = function (idPar, nomPar, prenomPar, mailPar, telPar, idevt) {
-            //on créé le participant et on change son type en accompagnateur et on l'assigne au participant à accompagner
-            listeEvenements[idevt].ajouterPar(idPar, nomPar, prenomPar, mailPar, telPar);
-            listeEvenements[idevt].listeParticipants[idPar].type="Accompagnateur";
-            this.tailleListAcc = this.tailleListAcc + 1;
-            this.listeAccompagnateur[this.tailleListAcc] = listeEvenements[idevt].listeParticipants[idPar];
+        //on créé le participant et on change son type en accompagnateur et on l'assigne au participant à accompagner
+        listeEvenements[idevt].ajouterPar(idPar, nomPar, prenomPar, mailPar, telPar);
+        listeEvenements[idevt].listeParticipants[idPar].type = listeEvenements[idevt].listeType[0];
+        this.tailleListAcc = this.tailleListAcc + 1;
+        this.listeAccompagnateur[this.tailleListAcc] = listeEvenements[idevt].listeParticipants[idPar];
     }
     //le type du participant choisit parmis les types de l'evt au quel il s'inscrit de base le type est "normal" soit le type des accompagnateurs
     this.type = "Normal";
@@ -81,8 +81,8 @@ function Evenement(id, acronyme, nom, adresse, dateOuvIns, dateFerIns, nbMaxPar)
     this.tailleListPart = 0;
     // la méthode pour ajouter un participant
     this.ajouterPar = function (idPar, nomPar, prenomPar, mailPar, telPar) {
-            this.listeParticipants[idPar] = new Participant(idPar, nomPar, prenomPar, mailPar, telPar);
-            this.tailleListPart = this.tailleListPart + 1;
+        this.listeParticipants[idPar] = new Participant(idPar, nomPar, prenomPar, mailPar, telPar);
+        this.tailleListPart = this.tailleListPart + 1;
     }
     //liste des types acceptés pendant l'évènement
     this.listeType = {};
@@ -90,6 +90,8 @@ function Evenement(id, acronyme, nom, adresse, dateOuvIns, dateFerIns, nbMaxPar)
     this.ajouterType = function (idTp, nomTp, prixTp, nbAccTp) {
         this.listeType[idTp] = new Type(idTp, nomTp, prixTp, nbAccTp);
     }
+    //ajout type accompagnant de base
+    this.listeType[0] = new Type(0, "Accompagnant", "0", "0");
 }
 
 // créer un nouveau évènement
@@ -183,9 +185,9 @@ var ajouterAcc = function (idevt, idPar, idAcc, nomAcc, prenomAcc, mailAcc, telA
             //si le participant a un type pouvant être accompagné
             if (listeEvenements[idevt].listeParticipants[idPar].type !== 'Normal') {
                 //si la liste d'accompagnateur n'est pas déjà pleine
-                if (listeEvenements[idevt].listeParticipants[idPar].tailleListAcc<listeEvenements[idevt].listeParticipants[idPar].type.nbAcc){
+                if (listeEvenements[idevt].listeParticipants[idPar].tailleListAcc < listeEvenements[idevt].listeParticipants[idPar].type.nbAcc) {
                     //si la liste de participant à l'évènement n'est pas déjà pleine
-                    if(listeEvenements[idevt].tailleListPart<listeEvenements[idevt].information.nbMaxPar){
+                    if (listeEvenements[idevt].tailleListPart < listeEvenements[idevt].information.nbMaxPar) {
                         listeEvenements[idevt].listeParticipants[idPar].ajouterAcc(idAcc, nomAcc, prenomAcc, mailAcc, telAcc, idevt);
                         return 1;
                     }
@@ -197,11 +199,48 @@ var ajouterAcc = function (idevt, idPar, idAcc, nomAcc, prenomAcc, mailAcc, telA
 }
 
 //suppression d'un evt
-var suppEvt = function (idevt){
+var suppEvt = function (idevt) {
     //si l'évènement existe
     if (typeof listeEvenements[idevt] !== 'undefined') {
         delete listeEvenements[idevt];
         return 1;
+    }
+    return 0;
+}
+
+//Méthode statistique générale
+var statGen = function () {
+    var size = 0, nbPart = 0, key;
+    for (key in listeEvenements) {
+        if (listeEvenements.hasOwnProperty(key)) {
+            size++;
+            nbPart = nbPart + listeEvenements[key].tailleListPart;
+        }
+    }
+    return "Il y a " + size + " et une moyenne de " + (nbPart / size) + " participants par évènement.";
+}
+
+//Méthode statistique d'un évènement
+var statEvt = function (idevt) {
+    var envoi = "";
+    if (typeof listeEvenements[idevt] !== 'undefined') {
+        var size = 0, keyPar, keyTyp, nbPar;
+        nbPar=listeEvenements[idevt].tailleListPart;
+        envoi = "Il y a " + nbPar + " participants, ";
+        for (keyTyp in listeEvenements[idevt].listeType) {
+            if (listeEvenements[idevt].listeType.hasOwnProperty(keyTyp)) {
+                for (keyPar in listeEvenements[idevt].listeParticipants) {
+                    if (listeEvenements[idevt].listeParticipants.hasOwnProperty(keyPar)) {
+                        if (listeEvenements[idevt].listeParticipants[keyPar].type.id === listeEvenements[idevt].listeType[keyTyp].id){
+                            size++;
+                        }
+                    }
+                }
+                envoi = envoi+(size/nbPar)*100+"% sont "+listeEvenements[idevt].listeType[keyTyp].nom+", ";
+                size=0;
+            }
+        }
+        return envoi;
     }
     return 0;
 }
@@ -217,4 +256,5 @@ exports.afficheType = afficheType;
 exports.changerType = changerType;
 exports.ajouterAcc = ajouterAcc;
 exports.suppEvt = suppEvt;
-
+exports.statGen = statGen;
+exports.statEvt = statEvt;
