@@ -20,7 +20,7 @@ app.use('/bower_components', express.static(__dirname + '/bower_components'));
 //Obtention des informations d'un evenement FAIT
 app.get('/evt/:id', function (req, res) {
     var evt = evenement.afficheEvt(req.params.id);
-    if (typeof evt.information.acronyme === 'undefined') {
+    if (typeof evt.information === 'undefined') {
         res.status(404).json({monErreur: `L'evenement d'id ${req.params.id} n'existe pas.`});
     } else {
         res.json(evt);
@@ -85,4 +85,14 @@ app.post('/evt/par/acc/:id', function (req, res) {
 
 app.listen(3000, function () {
     console.log('Example app listening on port 3000!');
+});
+
+//Suppression d'un évènement existant
+app.post('/evt/supp/:id', function (req, res) {
+    if (!evenement.suppEvt(req.params.id)) {
+        res.status(409).json({monErreur: `L'evenement d'id ${req.params.id} n'existe pas, ou n'a pas pu être supprimé.`});
+    } else {
+        //Ressource supprimé
+        res.status(201).json(`L'evenement d'id ${req.params.id} a été supprimé avec succès.`);
+    }
 });

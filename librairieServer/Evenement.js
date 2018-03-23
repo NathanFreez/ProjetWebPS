@@ -92,9 +92,6 @@ function Evenement(id, acronyme, nom, adresse, dateOuvIns, dateFerIns, nbMaxPar)
     }
 }
 
-
-
-
 // créer un nouveau évènement
 var creerEvt = function (id, acronyme, nom, adresse, dateOuvIns, dateFerIns, nbMaxPar) {
     // s'il n'existe pas
@@ -199,6 +196,16 @@ var ajouterAcc = function (idevt, idPar, idAcc, nomAcc, prenomAcc, mailAcc, telA
     return 0;
 }
 
+//suppression d'un evt
+var suppEvt = function (idevt){
+    //si l'évènement existe
+    if (typeof listeEvenements[idevt] !== 'undefined') {
+        delete listeEvenements[idevt];
+        return 1;
+    }
+    return 0;
+}
+
 // les 4 fonctions exportées
 exports.creerEvt = creerEvt;
 exports.afficheEvt = afficheEvt;
@@ -209,4 +216,5 @@ exports.afficheAllEvt = afficheAllEvt;
 exports.afficheType = afficheType;
 exports.changerType = changerType;
 exports.ajouterAcc = ajouterAcc;
+exports.suppEvt = suppEvt;
 
