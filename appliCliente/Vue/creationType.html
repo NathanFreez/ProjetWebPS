@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col">
+        <h1 class='text-center text-success'>Création d'un type de participant</h1>
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div class="col-12 col-sm-10 col-md-6 col-lg-4">
+        <form name='creationTypeForm' ng-submit="creerType()"> <!-- ng-submit équivaut à ng-click sur le bouton submit du formulaire, mais ne sera déclenché que si le navigateur considère le formulaire comme correctement rempli (cf. required etc) -->
+            <div class="form-group">
+                <label for="idEvt">Id du type</label>
+                <input type="text" class="form-control" id="idEvt" placeholder="Saisissez un id" required tabindex="1" ng-model='type.id'>
+            </div>
+            <div class="form-group">
+                <label for="nomEvt">Nom de l'évenement</label>
+                <input type="text" class="form-control" id="nomEvt" placeholder="Nom" required tabindex="2" ng-model='type.nom'>
+            </div>
+            <div class="form-group">
+                <label for="adrEvt">Prix du billet</label>
+                <input type="number" class="form-control" id="adrEvt" required tabindex="3" min="0" value="0" ng-model='type.prix'>
+            </div>
+            <div class="form-group">
+                <label for="nbAcc">Nombre d'accompagnateurs possibles</label>
+                <input type="number" class="form-control" id="nbAcc" required tabindex="4" min="0" value="0" ng-model='type.nbAcc'>
+            </div>
+            <button type="submit" class="btn btn-primary">Créer</button>
+        </form>
+        <div ng-if="traitement.termine" class='mt-2'>
+            <div ng-if="!traitement.erreur" class="alert alert-success" role="alert">
+                Evénement correctement créé.
+            </div>
+            <div ng-if="traitement.erreur" class="alert alert-danger" role="alert">
+                {{traitement.erreur}}
+            </div>
+        </div>
+    </div>
+</div>

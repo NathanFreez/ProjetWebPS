@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col">
+        <h1 class='text-center text-success'>Liste des événements</h1>
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div class="col-12 col-sm-10 col-md-6 col-lg-4">
+        <table ng-controller="infosAllEvenementCtrl" border="1">
+    <tr ng-repeat="x in list">
+        <td>thft</td>
+        <td>{{x.id}}</td>
+        <td>{{x.nom}}</td>
+    </tr>
+</table>
+        <div ng-if="traitement.termine" class='mt-2'>
+            <div ng-if="!traitement.erreur" class="alert alert-success" role="alert">
+                Evénement correctement créé.
+            </div>
+            <div ng-if="traitement.erreur" class="alert alert-danger" role="alert">
+                {{traitement.erreur}}
+            </div>
+        </div>
+    </div>
+</div>
