@@ -24,6 +24,7 @@
                 <td>{{x.information.dateFerIns}}</td>
                 <td>{{x.information.nbMaxPar}}</td>
                 <td><button ng-controller="suppressionEvenementCtrl" ng-click="suppEvt(x.information.id)">Supprimer</button></td>
+                <td><button ui-sref="creationType">Ajouter type</button></td>
             </tr>
         </table>
         <div ng-if="traitement.termine" class='mt-2'>

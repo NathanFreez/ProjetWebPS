@@ -26,14 +26,14 @@ angular.module('myEventApp')
                     });
                 };
                 
-                $scope.suppEvt = function () {
+                $scope.suppEvt = function (id) {
                     alert("allo");
                     console.log($scope.id);
                     //Supprime l'ancienne position et l'ancien message d'erreur si présent
                     delete $scope.evenement;
                     delete $scope.erreur;
                     //Supprime l'evenement en indiquant l'id de l'evenement pour paramétrer l'url
-                    $scope.evenement = EvtFacto.SupprEvenement.get({id: $scope.id}, function () {
+                    $scope.evenement = EvtFacto.SupprEvenement.get(id, function () {
                         //evenement récupérée
                         //ici rien à faire
                         console.log($scope.evenement);
