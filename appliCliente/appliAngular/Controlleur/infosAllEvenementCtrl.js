@@ -28,6 +28,7 @@ angular.module('myEventApp')
                 
                 $scope.suppEvt = function () {
                     alert("allo");
+                    console.log($scope.id);
                     //Supprime l'ancienne position et l'ancien message d'erreur si présent
                     delete $scope.evenement;
                     delete $scope.erreur;
