@@ -7,7 +7,7 @@ angular.module('myEventApp')
                     Evenement: $resource('/evt/:id', //URL de la ressource
                             {id: '@id'}, //Le paramètre 'id' de l'URL doit être trouvé dans l'instance de la ressource sous le nom 'id'
                             ),
-                    AllEvenement: $resource('/', //URL de la ressource
+                    AllEvenement: $resource('/liste', //URL de la ressource
                             ),
                     SupprEvenement: $resource('/evt/supp/:id', //URL de la ressource
                             ),

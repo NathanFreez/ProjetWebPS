@@ -8,7 +8,7 @@
         <form name='creationEvtForm' ng-submit="creerEvt()"> <!-- ng-submit équivaut à ng-click sur le bouton submit du formulaire, mais ne sera déclenché que si le navigateur considère le formulaire comme correctement rempli (cf. required etc) -->
             <div class="form-group">
                 <label for="idEvt">Id de l'événement</label>
-                <input type="text" class="form-control" id="idEvt" placeholder="Saisissez un id" required tabindex="1" ng-model='evenement.id'>
+                <input type="number" class="form-control" id="idEvt" placeholder="Saisissez un id" required tabindex="1" ng-model='evenement.id'>
             </div>
             <div class="form-group">
                 <label for="acrEvt">Acronyme de l'évenement</label>
@@ -29,6 +29,10 @@
             <div class="form-group">
                 <label for="dateFerIns">Date de fermeture des inscriptions</label>
                 <input type="date" class="form-control" id="dateFerIns" min="2018-01-01" required tabindex="6" ng-model='evenement.dateFerIns'>
+            </div>
+            <div class="form-group">
+                <label for="nb">Nombre maximum de participants</label>
+                <input type="number" class="form-control" id="nb" placeholder="Nombre de participants" required tabindex="1" ng-model='evenement.nbMaxPar'>
             </div>
             <button type="submit" class="btn btn-primary">Créer</button>
         </form>

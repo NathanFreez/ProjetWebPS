@@ -5,16 +5,30 @@
 </div>
 <div class="row justify-content-center">
     <div class="col-12 col-sm-10 col-md-6 col-lg-4">
-        <table ng-controller="infosAllEvenementCtrl" border="1">
-    <tr ng-repeat="x in list">
-        <td>thft</td>
-        <td>{{x.id}}</td>
-        <td>{{x.nom}}</td>
-    </tr>
-</table>
+        <table ng-controller="infosAllEvenementCtrl" ng-init="afficheAllEvt()" class="table table-dark">
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">acronyme</th>
+                <th scope="col">nom</th>
+                <th scope="col">adresse</th>
+                <th scope="col">date début inscriptions</th>
+                <th scope="col">date fin inscriptions</th>
+                <th scope="col">nb max participants</th>
+            </tr>
+            <tr ng-repeat="x in evenements" >
+                <td>{{x.information.id}}</td>
+                <td>{{x.information.acronyme}}</td>
+                <td>{{x.information.nom}}</td>
+                <td>{{x.information.adresse}}</td>
+                <td>{{x.information.dateOuvIns}}</td>
+                <td>{{x.information.dateFerIns}}</td>
+                <td>{{x.information.nbMaxPar}}</td>
+                <td><button ng-click="suppEvt(x.information.id)">Supprimer</button></td>
+            </tr>
+        </table>
         <div ng-if="traitement.termine" class='mt-2'>
             <div ng-if="!traitement.erreur" class="alert alert-success" role="alert">
-                Evénement correctement créé.
+                Evénement correctement supprimé.
             </div>
             <div ng-if="traitement.erreur" class="alert alert-danger" role="alert">
                 {{traitement.erreur}}
