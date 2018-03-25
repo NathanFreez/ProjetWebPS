@@ -5,8 +5,6 @@ angular.module('myEventApp')
         .controller('infosEvenementCtrl', ["$scope", "$window", "EvenementFactory", function ($scope, $window, EvtFacto) { //Injection du $scope mais également de notre service CompteFactory
                 //Fonction "publique" d'obtention de la position du compte
                 $scope.afficheEvt = function (id) {
-                    $window.location.replace("#!/creation-type");
-                    console.log($window.document.getElementById('ici'));
                     //Supprime l'ancienne position et l'ancien message d'erreur si présent
                     delete $scope.evenement;
                     delete $scope.erreur;
