@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col">
+        <h1 class='text-center text-success'>Liste des participants</h1>
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div ng-controller="infosEvenementCtrl" class="col-12 col-sm-10 col-md-6 col-lg-4">
+        <form name='positionCompteForm' ng-submit="afficheEvt()">  <!-- ng-submit équivaut à ng-click sur le bouton submit du formulaire, mais ne sera déclenché que si le navigateur considère le formulaire comme correctement rempli (cf. required etc) -->
+            <div class="form-group" ng-controller="infosAllEvenementCtrl" ng-init="afficheAllEvt()">
+                <label for="idEvt">Id de l'événement</label>
+                <select ng-model='idchx' ng-options="evenements.information.id for evenements in evenements" required><option></option></select>
+            </div>
+            <button type="submit" class="btn btn-primary">Afficher</button>
+        </form>
+        <div ng-if="erreur" class='mt-2'>
+            <div class="alert alert-danger" role="alert">
+                {{erreur}}
+            </div>
+        </div>
+        <div ng-if="evenementUnique.information.id" class="col-12 col-sm-10 col-md-6 col-lg-4"> <!-- le ng-if sur position.id et non pas sur position tout cours assure l'affichage uniquement si l'objet position existe et est correctement rempli-->
+            <div class="col-12 col-sm-10 col-md-6 col-lg-4">
+                <table class="table table-dark">
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">nom</th>
+                        <th scope="col">prenom</th>
+                        <th scope="col">mail</th>
+                        <th scope="col">tel</th>
+                        <th scope="col">type</th>
+                    </tr>
+                    <tr ng-repeat="x in evenementUnique.listeParticipants" >
+                        <td>{{x.information.idPar}}</td>
+                        <td>{{x.information.nomPar}}</td>
+                        <td>{{x.information.prenomPar}}</td>
+                        <td>{{x.information.mailPar}}</td>
+                        <td>{{x.information.telPar}}</td>
+                        <td>{{x.type.nom}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
