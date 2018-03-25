@@ -27,6 +27,7 @@
                         <th scope="col">mail</th>
                         <th scope="col">tel</th>
                         <th scope="col">type</th>
+                        <th scope="col">accompagnateur</th>
                     </tr>
                     <tr ng-repeat="x in evenementUnique.listeParticipants" >
                         <td>{{x.information.idPar}}</td>
@@ -35,6 +36,21 @@
                         <td>{{x.information.mailPar}}</td>
                         <td>{{x.information.telPar}}</td>
                         <td>{{x.type.nom}}</td>
+                        <td>
+                            <table>
+                                <tr ng-repeat="y in x.listeAccompagnateur">
+                                    <td>
+                                        {{y.information.idPar}}
+                                    </td>
+                                    <td>
+                                        {{y.information.nomPar}}
+                                    </td>
+                                    <td>
+                                        {{y.information.prenomPar}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
                         <td><button ng-controller="suppParticipantCtrl" ng-click="suppPar(x.information.idPar)">Supprimer</button></td>
                     </tr>
                 </table>
