@@ -8,7 +8,7 @@
         <form name='creationTypeForm' ng-submit="creerType()"> <!-- ng-submit équivaut à ng-click sur le bouton submit du formulaire, mais ne sera déclenché que si le navigateur considère le formulaire comme correctement rempli (cf. required etc) -->
             <div class="form-group" ng-controller="infosAllEvenementCtrl" ng-init="afficheAllEvt()">
                 <label for="idEvt">Id de l'événement</label>
-                <select ng-model='type.id' required ng-options="evenements.information.id as evenements.information.acronyme for evenements in evenements"><option></option></select>
+                <select id='hello' ng-model='type.id' required ng-options="evenements.information.id as evenements.information.acronyme for evenements in evenements"><option></option></select>
             </div>
             <div class="form-group">
                 <label for="idEvt">Id du type</label>

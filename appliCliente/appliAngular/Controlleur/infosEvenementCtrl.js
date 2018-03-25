@@ -8,11 +8,13 @@ angular.module('myEventApp')
                     //$window.location.replace("#!/creation-type");
                     //console.log($window.document.getElementById('ici'));
                     //Supprime l'ancienne position et l'ancien message d'erreur si présent
-                    console.log('cc');
+                    for (var cs = $scope.$$childHead; cs; cs = cs.$$nextSibling) {
+                       var idE = cs.idchx.information.id;
+                    }
                     delete $scope.evenementUnique;
                     delete $scope.erreur;
                     //Récupère l'evenement en indiquant l'id de l'evenement pour paramétrer l'url
-                    $scope.evenementUnique = EvtFacto.Evenement.get({id: $scope.idEvent}, function () {
+                    $scope.evenementUnique = EvtFacto.Evenement.get({id: idE}, function () {
                         //evenement récupérée
                         //ici rien à faire
                         console.log($scope.evenementUnique);
