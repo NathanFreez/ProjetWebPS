@@ -4,18 +4,21 @@
 angular.module('myEventApp')
         .controller('infosEvenementCtrl', ["$scope", "$window", "EvenementFactory", function ($scope, $window, EvtFacto) { //Injection du $scope mais également de notre service CompteFactory
                 //Fonction "publique" d'obtention de la position du compte
-                $scope.afficheEvt = function (id) {
+                $scope.afficheEvt = function () {
+                    //$window.location.replace("#!/creation-type");
+                    //console.log($window.document.getElementById('ici'));
                     //Supprime l'ancienne position et l'ancien message d'erreur si présent
-                    delete $scope.evenement;
+                    console.log('cc');
+                    delete $scope.evenementUnique;
                     delete $scope.erreur;
                     //Récupère l'evenement en indiquant l'id de l'evenement pour paramétrer l'url
-                    $scope.evenement = EvtFacto.Evenement.get({id: id}, function () {
+                    $scope.evenementUnique = EvtFacto.Evenement.get({id: $scope.idEvent}, function () {
                         //evenement récupérée
                         //ici rien à faire
-                        console.log($scope.evenement);
+                        console.log($scope.evenementUnique);
                     }, function (err) {
                         //une erreur est survenue : on supprime l'objet evenement créé
-                        console.log($scope.evenement);
+                        console.log($scope.evenementUnique);
                         //Si le code de retour est un de node code géré, on affichera le message d'erreur personnalisé
                         if (err.status === 404) {
                             $scope.erreur = err.data.monErreur;
