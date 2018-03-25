@@ -217,7 +217,7 @@ var statGen = function () {
             nbPart = nbPart + listeEvenements[key].tailleListPart;
         }
     }
-    return "Il y a " + size + " et une moyenne de " + (nbPart / size) + " participants par évènement.";
+    return "Il y a " + size + " evenement(s) et une moyenne de " + (nbPart / size) + " participants par évènement.";
 }
 
 //Méthode statistique d'un évènement
