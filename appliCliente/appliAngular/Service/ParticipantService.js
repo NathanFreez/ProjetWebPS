@@ -12,7 +12,11 @@ angular.module('myEventApp')
                             ),
                     Accompagnateur: $resource('/evt/par/acc/:id', //URL de la ressource
                             {id: '@id'}, //Le paramètre 'id' de l'URL doit être trouvé dans l'instance de la ressource sous le nom 'id'
+                            ),
+                    SuppParticipant: $resource('/evt/par/supp/:id', //URL de la ressource
+                            {id: '@id'}, //Le paramètre 'id' de l'URL doit être trouvé dans l'instance de la ressource sous le nom 'id'
                             )
+
                 };
             }]);
 

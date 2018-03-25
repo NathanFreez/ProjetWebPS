@@ -208,6 +208,18 @@ var suppEvt = function (idevt) {
     return 0;
 }
 
+var suppPar = function (idevt, idPar) {
+    //si l'évènement existe
+    if (typeof listeEvenements[idevt] !== 'undefined') {
+        if(typeof listeEvenements[idevt].listeParticipants[idPar]!=='undefined'){
+            delete listeEvenements[idevt].listeParticipants[idPar];
+            listeEvenements[idevt].tailleListPart=listeEvenements[idevt].tailleListPart-1;
+            return 1;
+        }
+    }
+    return 0;
+}
+
 //Méthode statistique générale
 var statGen = function () {
     var size = 0, nbPart = 0, key;
@@ -258,3 +270,4 @@ exports.ajouterAcc = ajouterAcc;
 exports.suppEvt = suppEvt;
 exports.statGen = statGen;
 exports.statEvt = statEvt;
+exports.suppPar = suppPar;

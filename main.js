@@ -113,3 +113,13 @@ app.get('/evt/supp/:id', function (req, res) {
         res.status(201).json(`L'evenement d'id ${req.params.id} a été supprimé avec succès.`);
     }
 });
+
+//Suppression d'un évènement existant FAIT
+app.post('/evt/par/supp/:id', function (req, res) {
+    if (!evenement.suppPar(req.params.id, req.body.idPar)) {
+        res.status(409).json({monErreur: `Le participant d'id ${req.body.idPar} n'existe pas, ou n'a pas pu être supprimé.`});
+    } else {
+        //Ressource supprimé
+        res.status(201).json(`Le participant d'id ${req.body.idPar} a été supprimé avec succès.`);
+    }
+});

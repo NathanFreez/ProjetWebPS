@@ -35,6 +35,7 @@
                         <td>{{x.information.mailPar}}</td>
                         <td>{{x.information.telPar}}</td>
                         <td>{{x.type.nom}}</td>
+                        <td><button ng-controller="suppParticipantCtrl" ng-click="suppPar(x.information.idPar)">Supprimer</button></td>
                     </tr>
                 </table>
             </div>

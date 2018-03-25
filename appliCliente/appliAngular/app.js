@@ -55,6 +55,11 @@ angular.module('myEventApp', ['ui.router', 'ngResource'])
                             url: '/stats-general',
                             templateUrl: 'Vue/statsGeneral.html',
                             controller: 'statsGeneralCtrl'
+                        })
+                        .state('suppParticipant', {
+                            url: '/supp-participant',
+                            templateUrl: 'Vue/suppParticipant.html',
+                            controller: 'suppParticipantCtrl'
                         });
                 //Pour tout autre route (url) qui ne correspondrait pas à un des états déclarés précédemment, on redirige vers l'état creation.
                 $urlServiceProvider.rules.otherwise({state: 'creationEvenement'});
