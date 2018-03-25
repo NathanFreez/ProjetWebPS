@@ -5,6 +5,10 @@ angular.module('myEventApp')
         .controller('changementTypeAccCtrl', ["$scope", "ParticipantFactory", function ($scope, PartFacto) { //Injection du $scope mais également de notre service CompteFactory
                 //Fonction "publique" de changement de type
                 $scope.ajouterAcc = function () {
+                    for (var cs = $scope.$$childHead; cs; cs = cs.$$nextSibling) {
+                       var idE = cs.evenementUnique.information.id;
+                    }
+                    $scope.accompagnateur.id=idE;
                     //positionnement de l'indicateur de traitement en cours
                     $scope.traitement = {termine: false};
                     //Changement de type (envoie d'un POST à l'URL de la ressource)

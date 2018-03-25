@@ -57,8 +57,7 @@ function Participant(idPar, nomPar, prenomPar, mailPar, telPar, idevt) {
     // la méthode pour ajouter des accompagnateurs
     this.ajouterAcc = function (idPar, nomPar, prenomPar, mailPar, telPar, idevt) {
         //on créé le participant et on change son type en accompagnateur et on l'assigne au participant à accompagner
-        listeEvenements[idevt].ajouterPar(idPar, nomPar, prenomPar, mailPar, telPar);
-        listeEvenements[idevt].listeParticipants[idPar].type = listeEvenements[idevt].listeType[0];
+        listeEvenements[idevt].ajouterPar(idPar, nomPar, prenomPar, mailPar, telPar, 0);
         this.tailleListAcc = this.tailleListAcc + 1;
         this.listeAccompagnateur[this.tailleListAcc] = listeEvenements[idevt].listeParticipants[idPar];
     }
