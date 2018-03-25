@@ -5,6 +5,10 @@ angular.module('myEventApp')
         .controller('creationParticipantCtrl', ["$scope", "ParticipantFactory", function ($scope, PartFacto) { //Injection du $scope mais également de notre service CompteFactory
                 //Fonction "publique" de creation de participant
                 $scope.creerPar = function () {
+                    for (var cs = $scope.$$childHead; cs; cs = cs.$$nextSibling) {
+                       var idE = cs.evenementUnique.information.id;
+                    }                    
+                    $scope.participant.id = idE;
                     //positionnement de l'indicateur de traitement en cours
                     $scope.traitement = {termine: false};
                     //Création de participant (envoie d'un POST à l'URL de la ressource)
@@ -26,6 +30,7 @@ angular.module('myEventApp')
 
                 //A l'initialisation du controlleur : initialise les données du scope
                 $scope.participant = new PartFacto.Participant(); //Création d'une nouvelle instance de ressource Participant
+                $scope.participant = new PartFacto.ChangeTypeParticipant();
                 $scope.traitement = {termine: false}; //Mise en place de l'indicateur de traitement terminé
             }]);
 
