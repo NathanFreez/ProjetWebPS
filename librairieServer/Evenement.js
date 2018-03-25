@@ -212,6 +212,10 @@ var suppPar = function (idevt, idPar) {
     //si l'évènement existe
     if (typeof listeEvenements[idevt] !== 'undefined') {
         if(typeof listeEvenements[idevt].listeParticipants[idPar]!=='undefined'){
+            for (var Acc in listeEvenements[idevt].listeParticipants[idPar].listeAccompagnateur){
+                delete listeEvenements[idevt].listeParticipants[listeEvenements[idevt].listeParticipants[idPar].listeAccompagnateur[Acc].information.idPar];
+                listeEvenements[idevt].tailleListPart=listeEvenements[idevt].tailleListPart-1;
+            }
             delete listeEvenements[idevt].listeParticipants[idPar];
             listeEvenements[idevt].tailleListPart=listeEvenements[idevt].tailleListPart-1;
             return 1;
