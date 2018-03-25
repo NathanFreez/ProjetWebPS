@@ -38,6 +38,11 @@
                     </tr>
                 </table>
             </div>
+            
+            <div ng-controller="statsEvenementCtrl" ng-init="statEvt()" class="col-12 col-sm-10 col-md-6 col-lg-4">
+                <font ng-repeat="x in stats">{{x}}</font>
+            </div>
+            
         </div>
     </div>
 </div>
