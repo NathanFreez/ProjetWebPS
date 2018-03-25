@@ -17,36 +17,35 @@
                 {{erreur}}
             </div>
         </div>
-        <div ng-if="evenementUnique.information.id" class="col-12 col-sm-10 col-md-6 col-lg-4"> <!-- le ng-if sur position.id et non pas sur position tout cours assure l'affichage uniquement si l'objet position existe et est correctement rempli-->
-            <div class="card">
-                <form name='creationEvtForm' ng-submit="creerPar()"> <!-- idPar, nomPar, prenomPar, mailPar, telPar ng-submit équivaut à ng-click sur le bouton submit du formulaire, mais ne sera déclenché que si le navigateur considère le formulaire comme correctement rempli (cf. required etc) -->
-                    <div class="form-group">
-                        <label for="idEvt">Id du Type</label>
-                        <select ng-model='participant.idTp' ng-options="mot.id as mot.nom for mot in {{evenementUnique.listeType}}" required><option></option></select>
-                    </div>
-                    <div class="form-group">
-                        <label for="idEvt">Id du participant</label>
-                        <input type="number" class="form-control" id="idEvt" placeholder="Saisissez un id" required tabindex="1" ng-model='participant.idPar'>
-                    </div>
-                    <div class="form-group">
-                        <label for="nomEvt">Nom du participant</label>
-                        <input type="text" class="form-control" id="nomEvt" placeholder="Nom" required tabindex="2" ng-model='participant.nomPar'>
-                    </div>
-                    <div class="form-group">
-                        <label for="prenomEvt">Prénom du participant</label>
-                        <input type="text" class="form-control" id="prenomEvt" placeholder="Prénom" required tabindex="3" ng-model='participant.prenomPar'>
-                    </div>
-                    <div class="form-group">
-                        <label for="mailPar">Mail du participant</label>
-                        <input type="text" class="form-control" id="mailPar" placeholder="Mail" required tabindex="4" ng-model='participant.mailPar'>
-                    </div>
-                    <div class="form-group">
-                        <label for="telPar">Téléphone du participant</label>
-                        <input type="text" class="form-control" id="telPar" placeholder="téléphone" required tabindex="5" ng-model='participant.telPar'>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Créer</button>
-                </form>
-            </div>
+        <p></p>
+        <div ng-if="evenementUnique.information.id" class="row justify-content-center"> <!-- le ng-if sur position.id et non pas sur position tout cours assure l'affichage uniquement si l'objet position existe et est correctement rempli-->
+            <form name='creationEvtForm' ng-submit="creerPar()"> <!-- idPar, nomPar, prenomPar, mailPar, telPar ng-submit équivaut à ng-click sur le bouton submit du formulaire, mais ne sera déclenché que si le navigateur considère le formulaire comme correctement rempli (cf. required etc) -->
+                <div class="form-group">
+                    <label for="idEvt">Id du Type</label>
+                    <select ng-model='participant.idTp' ng-options="mot.id as mot.nom for mot in {{evenementUnique.listeType}}" required><option></option></select>
+                </div>
+                <div class="form-group">
+                    <label for="idEvt">Id du participant</label>
+                    <input type="number" class="form-control" id="idEvt" placeholder="Saisissez un id" required tabindex="1" ng-model='participant.idPar'>
+                </div>
+                <div class="form-group">
+                    <label for="nomEvt">Nom du participant</label>
+                    <input type="text" class="form-control" id="nomEvt" placeholder="Nom" required tabindex="2" ng-model='participant.nomPar'>
+                </div>
+                <div class="form-group">
+                    <label for="prenomEvt">Prénom du participant</label>
+                    <input type="text" class="form-control" id="prenomEvt" placeholder="Prénom" required tabindex="3" ng-model='participant.prenomPar'>
+                </div>
+                <div class="form-group">
+                    <label for="mailPar">Mail du participant</label>
+                    <input type="text" class="form-control" id="mailPar" placeholder="Mail" required tabindex="4" ng-model='participant.mailPar'>
+                </div>
+                <div class="form-group">
+                    <label for="telPar">Téléphone du participant</label>
+                    <input type="text" class="form-control" id="telPar" placeholder="téléphone" required tabindex="5" ng-model='participant.telPar'>
+                </div>
+                <button type="submit" class="btn btn-primary">Créer</button>
+            </form>
         </div>
     </div>
 </div>
