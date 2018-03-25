@@ -2,14 +2,16 @@
  * Ajout d'un controlleur infosEvenementCtrl au module myEventApp. Le module myEventApp doit avoir été créé précédemment (cf commentaire sur index.html)
  */
 angular.module('myEventApp')
-        .controller('infosEvenementCtrl', ["$scope", "EvenementFactory", function ($scope, EvtFacto) { //Injection du $scope mais également de notre service CompteFactory
+        .controller('infosEvenementCtrl', ["$scope", "$window", "EvenementFactory", function ($scope, $window, EvtFacto) { //Injection du $scope mais également de notre service CompteFactory
                 //Fonction "publique" d'obtention de la position du compte
-                $scope.afficheEvt = function () {
+                $scope.afficheEvt = function (id) {
+                    $window.location.replace("#!/creation-type");
+                    console.log($window.document.getElementById('ici'));
                     //Supprime l'ancienne position et l'ancien message d'erreur si présent
                     delete $scope.evenement;
                     delete $scope.erreur;
                     //Récupère l'evenement en indiquant l'id de l'evenement pour paramétrer l'url
-                    $scope.evenement = EvtFacto.Evenement.get({id: $scope.id}, function () {
+                    $scope.evenement = EvtFacto.Evenement.get({id: id}, function () {
                         //evenement récupérée
                         //ici rien à faire
                         console.log($scope.evenement);

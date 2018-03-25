@@ -25,7 +25,7 @@ angular.module('myEventApp')
                 };
 
                 //A l'initialisation du controlleur : initialise les données du scope
-                $scope.participant = new ParFacto.Participant(); //Création d'une nouvelle instance de ressource Participant
+                $scope.participant = new PartFacto.Participant(); //Création d'une nouvelle instance de ressource Participant
                 $scope.traitement = {termine: false}; //Mise en place de l'indicateur de traitement terminé
             }]);
 

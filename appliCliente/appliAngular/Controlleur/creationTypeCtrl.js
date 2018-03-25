@@ -5,6 +5,7 @@ angular.module('myEventApp')
         .controller('creationTypeCtrl', ["$scope", "TypeFactory", function ($scope, TypeFacto) { //Injection du $scope mais également de notre service CompteFactory
                 //Fonction "publique" de creation de type de participation
                 $scope.creerType = function () {
+                    $scope.type.id=$scope.type.id.information.id;
                     //positionnement de l'indicateur de traitement en cours
                     $scope.traitement = {termine: false};
                     //Création de type de participation (envoie d'un POST à l'URL de la ressource)
