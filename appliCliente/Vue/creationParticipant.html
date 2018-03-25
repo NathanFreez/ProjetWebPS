@@ -22,7 +22,7 @@
                 <form name='creationEvtForm' ng-submit="creerPar()"> <!-- idPar, nomPar, prenomPar, mailPar, telPar ng-submit équivaut à ng-click sur le bouton submit du formulaire, mais ne sera déclenché que si le navigateur considère le formulaire comme correctement rempli (cf. required etc) -->
                     <div class="form-group">
                         <label for="idEvt">Id du Type</label>
-                        <select ng-model='idtype' ng-options="mot.id for mot in {{evenementUnique.listeType}}" required><option></option></select>
+                        <select ng-model='participant.idTp' ng-options="mot.id as mot.nom for mot in {{evenementUnique.listeType}}" required><option></option></select>
                     </div>
                     <div class="form-group">
                         <label for="idEvt">Id du participant</label>

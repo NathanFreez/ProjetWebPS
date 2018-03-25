@@ -45,7 +45,7 @@ app.post('/evt/:id', function (req, res) {
 
 //Création d'un participant (identifiant fourni à la création) FAIT
 app.post('/evt/par/:id', function (req, res) {
-    if (!evenement.creerPar(req.body.idPar, req.body.nomPar, req.body.prenomPar, req.body.mailPar, req.body.telPar, req.params.id)) {
+    if (!evenement.creerPar(req.body.idPar, req.body.nomPar, req.body.prenomPar, req.body.mailPar, req.body.telPar,req.body.idTp, req.params.id)) {
         res.status(409).json({monErreur: `L'evenement d'id ${req.params.id} n'existe pas.`});
     } else {
         //Ressource créé : on renvoit l'état de la ressource (cad ici sa position)

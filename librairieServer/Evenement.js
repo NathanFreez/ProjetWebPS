@@ -80,8 +80,9 @@ function Evenement(id, acronyme, nom, adresse, dateOuvIns, dateFerIns, nbMaxPar)
     // le nombre de participants actuel
     this.tailleListPart = 0;
     // la méthode pour ajouter un participant
-    this.ajouterPar = function (idPar, nomPar, prenomPar, mailPar, telPar) {
+    this.ajouterPar = function (idPar, nomPar, prenomPar, mailPar, telPar, idTp) {
         this.listeParticipants[idPar] = new Participant(idPar, nomPar, prenomPar, mailPar, telPar);
+        this.listeParticipants[idPar].type=this.listeType[idTp];
         this.tailleListPart = this.tailleListPart + 1;
     }
     //liste des types acceptés pendant l'évènement
@@ -120,13 +121,13 @@ var creerType = function (idTp, nomTp, prixTp, nbAccTp, id) {
 }
 
 // créer un nouveau évènement
-var creerPar = function (idPar, nomPar, prenomPar, mailPar, telPar, id) {
+var creerPar = function (idPar, nomPar, prenomPar, mailPar, telPar,idTp, id) {
     // si l'evenement existe
     if (typeof listeEvenements[id] !== 'undefined') {
         // on regarde si le participant n'es pas déjà dans la liste des Participants à l'évènement
         if (typeof listeEvenements[id].listeParticipants[idPar] === 'undefined') {
             //on l'ajoute à l'évènement
-            listeEvenements[id].ajouterPar(idPar, nomPar, prenomPar, mailPar, telPar);
+            listeEvenements[id].ajouterPar(idPar, nomPar, prenomPar, mailPar, telPar, idTp);
             return 1;
         }
     }
