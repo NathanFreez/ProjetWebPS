@@ -9,7 +9,7 @@ angular.module('myEventApp')
                     delete $scope.stats;
                     delete $scope.erreur;
                     //Récupère les statistiques de l'evenement en indiquant l'id de l'evenement pour paramétrer l'url
-                    $scope.stats = EvtFacto.StatsEvenement.get({id: $scope.id}, function () {
+                    $scope.stats = EvtFacto.StatsEvenement.get({id: $scope.evenementUnique.information.id}, function () {
                         //stats récupérée
                         //ici rien à faire
                         console.log($scope.stats);
